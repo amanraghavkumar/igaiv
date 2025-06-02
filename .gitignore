@@ -12,9 +12,12 @@ __pycache__/
 # Virtual environment
 .env/
 .venv/
+venv
+venv/
 
 # Session file (optional but recommended to keep private)
 
 # System files
 .DS_Store
-Thumbs.db
+Thumbs.
+session.json
