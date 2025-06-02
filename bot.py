@@ -32,16 +32,16 @@ def login_instagram():
         cl.load_settings("session.json")
         cl.login(IG_USERNAME, IG_PASSWORD)
         cl.dump_settings("session.json")
-        logger.info("✅ Logged in using saved session.")
+        logger.info("Logged in using saved session.")
     except ChallengeRequired:
-        logger.warning("🔐 2FA Challenge required! Sending security code.")
+        logger.warning("2FA Challenge required! Sending security code.")
         cl.challenge_resolve()
-        code = input("📩 Enter the verification code sent to your phone/email: ")
+        code = input("Enter the verification code sent to your phone/email: ")
         cl.challenge_send_security_code(code)
         cl.dump_settings("session.json")
-        logger.info("✅ 2FA login successful. Session saved.")
+        logger.info("2FA login successful. Session saved.")
     except Exception as e:
-        logger.error(f"❌ Instagram login failed: {e}")
+        logger.error(f"Instagram login failed: {e}")
 
 
 # Extract shortcode from Instagram URL
@@ -69,10 +69,10 @@ async def handle_instagram_link(update: Update, context: ContextTypes.DEFAULT_TY
 
         # Download
         video_path = cl.video_download(media_pk)
-        logger.info(f"📥 Downloaded video: {video_path}")
+        logger.info(f"Downloaded video: {video_path}")
 
         # Upload
-        caption = media.caption_text or "Reposted via Telegram bot 🤖"
+        caption = media.caption_text or "Reposted via Telegram bot"
         cl.clip_upload(video_path, caption)
         logger.info(" Video uploaded to Instagram")
 
