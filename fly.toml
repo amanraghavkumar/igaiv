@@ -1,0 +1,19 @@
+app = "your-app-name" # Change this after `fly launch`
+
+primary_region = "sin" # Singapore (or change to nearest)
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080" # Optional, only needed for webhooks or APIs
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 80
+
+  [[services.ports]]
+    port = 443
